@@ -26,7 +26,7 @@ class ReceitaController extends AbstractController
     ) {
     }
 
-    #[Route('', methods: 'POST')]
+    #[Route(methods: 'POST')]
     public function create(Request $request): Response
     {
         $requestBody = $request->getContent();
@@ -54,6 +54,23 @@ class ReceitaController extends AbstractController
         return new JsonResponse([
             'msg' => 'receita cadastrada com sucesso',
             'receita' => $receita
-        ]);
+        ],Response::HTTP_CREATED);
+    }
+
+    #[Route(methods: 'GET')]
+    public function readAll(): Response
+    {
+        $receitaList = $this->receitaRepository->findAll();
+
+        return new JsonResponse($receitaList);
+    }
+
+    #[Route('/{id}', methods: 'GET')]
+    public function readById(int $id): Response
+    {
+        $receita = $this->receitaRepository->find($id);
+        $http_code = is_null($receita) ? Response::HTTP_NOT_FOUND : Response::HTTP_OK;
+
+        return new JsonResponse($receita, $http_code);
     }
 }
