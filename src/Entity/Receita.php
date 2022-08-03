@@ -4,12 +4,13 @@ namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 #[ORM\Entity()]
-class Receita
+class Receita implements JsonSerializable
 {
     #[ORM\Column(), ORM\Id, ORM\GeneratedValue()]
-    private int $id;
+    private ?int $id;
 
     #[ORM\Column()]
     private string $descricao;
@@ -61,4 +62,14 @@ class Receita
         return $this->id;
     }
 
+    public function jsonSerialize(): mixed
+    {
+        return [
+
+            'id' => $this->getId(),
+            'descricao' => $this->getDescricao(),
+            'valor' => $this->getValor(),
+            'data' => $this->getData()->format('Y-m-d')
+        ];
+    }
 }
