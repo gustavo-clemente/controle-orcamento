@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Receita;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -74,7 +75,7 @@ class ReceitaController extends AbstractController
         return new JsonResponse($receita, $http_code);
     }
 
-    #[Route('/{id}',methods:'PUT')]
+    #[Route('/{id}', methods: 'PUT')]
     public function update(Request $request, int $id)
     {
 
@@ -82,6 +83,15 @@ class ReceitaController extends AbstractController
         $receitaAtualizada = $this->receitaFactory->create($requestBody);
 
         $receitaExistente = $this->receitaRepository->find($id);
+
+        if (gettype($receitaAtualizada) == 'array') {
+
+            return new JsonResponse([
+
+                'msg' => 'Não foi possível cadastrar a receita',
+                'erros' => $receitaAtualizada
+            ], Response::HTTP_BAD_REQUEST);
+        }
 
         if (is_null($receitaExistente)) {
 
@@ -111,5 +121,25 @@ class ReceitaController extends AbstractController
             'msg' => 'receita atualizada com sucesso',
             'receita' => $receitaExistente
         ], Response::HTTP_OK);
+    }
+
+    #[Route('/{id}', methods: 'DELETE')]
+    public function delete(int $id)
+    {
+        $receita = $this->receitaRepository->find($id);
+
+        if (is_null($receita)) {
+
+            return new JsonResponse([
+
+                'msg' => 'O ID informado não corresponde a nenhuma receita'
+
+            ], Response::HTTP_NOT_FOUND);
+        }
+        $this->receitaRepository->remove($receita, true);
+
+        return new JsonResponse([
+            'msg' => 'Receita deletada com sucesso'
+        ]);
     }
 }
