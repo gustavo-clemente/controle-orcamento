@@ -4,6 +4,8 @@
 
 API criada em Symfony para controle de orçamento familiar.
 
+Esse projeto está sendo desenvolvido como parte do #alurachallengebackend4
+
 A principais funcionalidades são:
 
 - `Cadastro de receitas`: os ganhos mensais de um usuário (salário, renda extra, etc.)

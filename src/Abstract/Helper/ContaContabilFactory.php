@@ -11,8 +11,9 @@ abstract class ContaContabilFactory
 {
     use CreateViolationsArray;
 
-    protected function validate(array $json): array|false
+    protected function validate(?array $json): array|false
     {
+        $json = is_null($json) ? [] : $json;
         $validator = Validation::createValidator();
         $constraints = new Assert\Collection([
             'fields' => [

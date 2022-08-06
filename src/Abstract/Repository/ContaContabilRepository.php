@@ -3,10 +3,9 @@
 namespace App\Abstract\Repository;
 
 use App\Abstract\Entity\ContaContabil;
-use App\Interface\ContaContabilRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
-abstract class ContaContabilRepository extends ServiceEntityRepository implements ContaContabilRepositoryInterface
+abstract class ContaContabilRepository extends ServiceEntityRepository
 {
 
     public function add(ContaContabil $entity, bool $flush = false): void

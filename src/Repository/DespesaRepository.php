@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Abstract\Repository\ContaContabilRepository;
 use App\Entity\Despesa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,53 +15,11 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Despesa[]    findAll()
  * @method Despesa[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DespesaRepository extends ServiceEntityRepository
+class DespesaRepository extends ContaContabilRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Despesa::class);
     }
 
-    public function add(Despesa $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    public function remove(Despesa $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-//    /**
-//     * @return Despesa[] Returns an array of Despesa objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('d.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Despesa
-//    {
-//        return $this->createQueryBuilder('d')
-//            ->andWhere('d.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
