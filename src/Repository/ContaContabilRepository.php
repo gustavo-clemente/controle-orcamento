@@ -26,6 +26,16 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByDescription(string $descricao)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.descricao LIKE :descricao')
+            ->setParameter('descricao', "%{$descricao}%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findDuplicate(ContaContabil $entity): ?ContaContabil
     {
         return $this->createQueryBuilder('c')

@@ -78,9 +78,10 @@ abstract class ContaContabilController extends AbstractController
     }
 
     #[Route(methods: 'GET')]
-    public function readAll(): Response
+    public function readAll(Request $request): Response
     {
-        $contaContabilList = $this->repository->findAll();
+        $search = $request->query->get('descricao');
+        $contaContabilList = is_null($search) ? $this->repository->findAll() : $this->repository->findByDescription($search);
 
         return new JsonResponse($contaContabilList);
     }
