@@ -14,6 +14,7 @@
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/flex": "^2",
+        "symfony/form": "6.1.*",
         "symfony/framework-bundle": "6.1.*",
         "symfony/proxy-manager-bridge": "6.1.*",
         "symfony/runtime": "6.1.*",
@@ -67,6 +68,8 @@
             "php ./bin/console doctrine:schema:create",
             "php ./bin/console doctrine:migrations:migrate"
         ],
+        "database:diff": "php ./bin/console doctrine:migrations:diff",
+        "database:migrate": "php ./bin/console doctrine:migrations:migrate",
         "server:up": "php -S localhost:8080 -t public" 
     },
     "conflict": {

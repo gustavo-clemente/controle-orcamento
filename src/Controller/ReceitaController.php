@@ -2,28 +2,25 @@
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Helper\ReceitaFactory;
+use App\Entity\Receita;
+use App\Repository\ContaContabilRepository;
 use App\Repository\ReceitaRepository;
-use App\Service\ReceitaService;
-use App\Trait\ContaContabilRoutes;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/receita')]
-class ReceitaController extends AbstractController
+class ReceitaController extends ContaContabilController
 {
 
-    use ContaContabilRoutes;
-
-    /** @param EntityManager $entityManager */
     public function __construct(
-        private EntityManagerInterface $entityManager,
-        private ReceitaFactory $factory,
-        private ReceitaRepository $repository,
-        private ReceitaService $service
-    ) {
-    }
+        ReceitaRepository $repository,
+        ValidatorInterface $validator,
+        EntityManagerInterface $entityManager
+    ) 
+    {
 
+        parent::__construct(Receita::class,$repository,$validator,$entityManager);
+        
+    }
 }

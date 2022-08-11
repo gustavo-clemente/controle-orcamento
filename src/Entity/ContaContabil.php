@@ -1,31 +1,38 @@
 <?php
 
-namespace App\Abstract\Entity;
+namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use JsonSerializable;
 
-class ContaContabil implements JsonSerializable
+abstract class ContaContabil implements JsonSerializable
 {
+
     #[ORM\Column(), ORM\Id, ORM\GeneratedValue()]
     protected ?int $id;
 
     #[ORM\Column()]
-    protected string $descricao;
+    #[Assert\NotBlank(message: "O campo não pode ser vázio")]
+    protected ?string $descricao;
 
     #[ORM\Column()]
-    protected float $valor;
+    #[Assert\NotBlank(message: "O campo não pode ser vázio")]
+    #[Assert\Type(type: ['int', 'float','string'], message: "O valor deve ser um número decimal")]
+    #[Assert\Positive(message: "O valor deve ser um número maior do que 0")]
+    protected ?float $valor;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotNull(message: "O campo não pode ser vázio")]
     protected \DateTimeInterface $data;
 
-    public function getDescricao(): string
+    public function getDescricao(): ?string
     {
         return $this->descricao;
     }
 
-    public function setDescricao(string $descricao): self
+    public function setDescricao(?string $descricao): self
     {
         $this->descricao = $descricao;
 
@@ -37,7 +44,7 @@ class ContaContabil implements JsonSerializable
         return $this->valor;
     }
 
-    public function setValor(float $valor): self
+    public function setValor(?float $valor): self
     {
         $this->valor = $valor;
 

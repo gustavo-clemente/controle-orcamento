@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Abstract\Repository\ContaContabilRepository;
+use App\Repository\ContaContabilRepository;
 use App\Entity\Despesa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

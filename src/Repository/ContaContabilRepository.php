@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Abstract\Repository;
+namespace App\Repository;
 
-use App\Abstract\Entity\ContaContabil;
+use App\Entity\ContaContabil;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 abstract class ContaContabilRepository extends ServiceEntityRepository
@@ -36,6 +36,7 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
                 'descricao' => $entity->getDescricao(),
                 'data' => $entity->getData()
             ])
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
         ;
