@@ -22,4 +22,21 @@ class DespesaRepository extends ContaContabilRepository
         parent::__construct($registry, Despesa::class);
     }
 
+    public function getTotalPerCategory($year, $month)
+    {
+        return $this->createQueryBuilder('d')
+            ->select('SUM(d.valor) as total')
+            ->addSelect('d.categoria')
+            ->andWhere('YEAR(d.data) = :ano')
+            ->andWhere('MONTH(d.data) = :mes')
+            ->addGroupBy('d.categoria')
+            ->orderBy('d.categoria')
+            ->setParameters([
+                'ano' => $year,
+                'mes' => $month
+            ])
+            ->getQuery()
+            ->getResult();
+    }
+
 }

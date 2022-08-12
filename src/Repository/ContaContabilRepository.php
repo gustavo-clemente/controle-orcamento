@@ -32,8 +32,7 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
             ->andWhere('c.descricao LIKE :descricao')
             ->setParameter('descricao', "%{$descricao}%")
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     public function findDuplicate(ContaContabil $entity): ?ContaContabil
@@ -48,8 +47,7 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
             ])
             ->setMaxResults(1)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 
     public function findByDate(int $year, int $month)
@@ -64,5 +62,20 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
             ])
             ->getQuery()
             ->getResult();
+    }
+
+    public function getTotal(int $year, int $month)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('YEAR(c.data) = :ano')
+            ->andWhere('MONTH(c.data) = :mes')
+            ->Select('SUM(c.valor) as total')
+            ->setParameters([
+
+                'ano' => $year,
+                'mes' => $month
+            ])
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }
