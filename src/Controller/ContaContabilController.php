@@ -95,6 +95,14 @@ abstract class ContaContabilController extends AbstractController
         return new JsonResponse($contaContabil, $http_code);
     }
 
+    #[Route('/{year}/{month}')]
+    public function readByDate(int $year, int $month)
+    {
+        $contaContabilList = $this->repository->findByDate($year,$month);
+
+        return new JsonResponse($contaContabilList);
+    }
+
     #[Route('/{id}', methods: 'PUT')]
     public function update(Request $request, int $id)
     {

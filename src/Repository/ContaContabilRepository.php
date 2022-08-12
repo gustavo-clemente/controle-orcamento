@@ -51,4 +51,18 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findByDate(int $year, int $month)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('YEAR(c.data) = :ano')
+            ->andWhere('MONTH(c.data) = :mes')
+            ->setParameters([
+
+                'ano' => $year,
+                'mes' => $month
+            ])
+            ->getQuery()
+            ->getResult();
+    }
 }
