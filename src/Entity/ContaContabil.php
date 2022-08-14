@@ -14,17 +14,12 @@ abstract class ContaContabil implements JsonSerializable
     protected ?int $id;
 
     #[ORM\Column()]
-    #[Assert\NotBlank(message: "O campo não pode ser vázio")]
     protected ?string $descricao;
 
     #[ORM\Column()]
-    #[Assert\NotBlank(message: "O campo não pode ser vázio")]
-    #[Assert\Type(type: ['int', 'float','string'], message: "O valor deve ser um número decimal")]
-    #[Assert\Positive(message: "O valor deve ser um número maior do que 0")]
     protected ?float $valor;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\NotNull(message: "O campo não pode ser vázio")]
     protected \DateTimeInterface $data;
 
     public function getDescricao(): ?string

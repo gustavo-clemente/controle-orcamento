@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Facade\RelatorioFacade;
 use App\Repository\DespesaRepository;
 use App\Repository\ReceitaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,25 +15,17 @@ class ResumoController extends AbstractController
 
     public function __construct(
 
-        private ReceitaRepository $receitaRepository,
-        private DespesaRepository $despesaRepository
+        private RelatorioFacade $relatorioFacade
     ) {
     }
     #[Route('/{year}/{month}')]
-    public function getSumary(int $year, int $month)
+    public function readSumaryAction(int $year, int $month)
     {
-        $totalReceita = $this->receitaRepository->getTotal($year, $month);
-        $totalDespesa = $this->despesaRepository->getTotal($year,$month);
-        $totalCategoria = $this->despesaRepository->getTotalPerCategory($year,$month);
+        $sumary = $this->relatorioFacade->getSumary($year, $month);
 
-        $saldoFinal = $totalReceita - $totalDespesa;
+        return new JsonResponse(
 
-        return new JsonResponse([
-
-            'totalReceita' => $totalReceita,
-            'totalDespesa' => $totalDespesa,
-            'saldoFinal' => $saldoFinal,
-            'TotalCategoria' => $totalCategoria
-        ]);
+            $sumary
+        );
     }
 }

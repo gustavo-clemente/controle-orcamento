@@ -64,7 +64,7 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getTotal(int $year, int $month)
+    public function getTotalMonth(int $year, int $month)
     {
         return $this->createQueryBuilder('c')
             ->andWhere('YEAR(c.data) = :ano')

@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Despesa extends ContaContabil
 {
     #[ORM\Column()]
-    #[Assert\Choice(callback: 'getCategoriaOptions', message: "Informe uma categoria válida.")]
     private string $categoria = 'Outras';
 
     public function getCategoria(): string
@@ -34,19 +33,5 @@ class Despesa extends ContaContabil
         return $data;
     }
 
-    public static function getCategoriaOptions()
-    {
-
-        return [
-
-            'Alimentação',
-            'Saúde',
-            'Moradia',
-            'Transporte',
-            'Educação',
-            'Lazer',
-            'Imprevistos',
-            'Outras'
-        ];
-    }
+    
 }
