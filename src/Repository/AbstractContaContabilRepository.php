@@ -2,13 +2,13 @@
 
 namespace App\Repository;
 
-use App\Entity\ContaContabil;
+use App\Entity\AbstractContaContabil;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
-abstract class ContaContabilRepository extends ServiceEntityRepository
+abstract class AbstractContaContabilRepository extends ServiceEntityRepository
 {
 
-    public function add(ContaContabil $entity, bool $flush = false): void
+    public function add(AbstractContaContabil $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -17,7 +17,7 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(ContaContabil $entity, bool $flush = false): void
+    public function remove(AbstractContaContabil $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -35,7 +35,22 @@ abstract class ContaContabilRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findDuplicate(ContaContabil $entity): ?ContaContabil
+    public function findDuplicate(AbstractContaContabil $entity): ?AbstractContaContabil
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.descricao = :descricao')
+            ->andWhere('MONTH(c.data) = MONTH(:data)')
+            ->andWhere('YEAR(c.data) = YEAR(:data)')
+            ->setParameters([
+                'descricao' => $entity->getDescricao(),
+                'data' => $entity->getData()
+            ])
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findMonthDuplicate(AbstractContaContabil $entity): ?AbstractContaContabil
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.descricao = :descricao')

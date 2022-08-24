@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
+use App\Interface\ContaContabilEntityInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use JsonSerializable;
 
-abstract class ContaContabil implements JsonSerializable
+abstract class AbstractContaContabil implements JsonSerializable
 {
 
     #[ORM\Column(), ORM\Id, ORM\GeneratedValue()]

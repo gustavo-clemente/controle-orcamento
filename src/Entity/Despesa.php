@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Entity\ContaContabil;
+use App\Entity\AbstractContaContabil;
 use App\Repository\DespesaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: DespesaRepository::class)]
-class Despesa extends ContaContabil
+class Despesa extends AbstractContaContabil
 {
     #[ORM\Column()]
-    private string $categoria = 'Outras';
+    private string $categoria;
 
     public function getCategoria(): string
     {

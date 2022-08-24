@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Repository\ContaContabilRepository;
+use App\Repository\AbstractContaContabilRepository;
 use App\Entity\Despesa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -12,10 +12,11 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @method Despesa|null find($id, $lockMode = null, $lockVersion = null)
  * @method Despesa|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Despesa|null findMonthDuplicate(Despesa $entity)
  * @method Despesa[]    findAll()
  * @method Despesa[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DespesaRepository extends ContaContabilRepository
+class DespesaRepository extends AbstractContaContabilRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

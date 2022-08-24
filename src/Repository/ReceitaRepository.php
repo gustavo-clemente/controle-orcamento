@@ -2,9 +2,8 @@
 
 namespace App\Repository;
 
-use App\Repository\ContaContabilRepository;
+use App\Repository\AbstractContaContabilRepository;
 use App\Entity\Receita;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Receita[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  * @method Receita|null findDuplicate(Receita $entity)
  */
-class ReceitaRepository extends ContaContabilRepository
+class ReceitaRepository extends AbstractContaContabilRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

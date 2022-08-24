@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Request\ReceitaRequest;
+use App\Entity\Receita;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -60,7 +60,7 @@ class ReceitaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => ReceitaRequest::class
+            'data_class' => Receita::class
         ]);
     }
 }

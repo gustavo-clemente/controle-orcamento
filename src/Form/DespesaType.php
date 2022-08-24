@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Request\DespesaRequest;
+use App\Entity\Despesa;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -78,7 +78,7 @@ class DespesaType extends AbstractType
     {
         $resolver->setDefaults([
 
-            'data_class' => DespesaRequest::class,
+            'data_class' => Despesa::class,
         ]);
     }
 
