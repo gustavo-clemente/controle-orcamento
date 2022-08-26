@@ -44,7 +44,7 @@ abstract class AbstractContaContabilFacade
 
     public function isDuplicate(AbstractContaContabil $contaContabil): bool
     {
-        $contaContabilDuplicate = $this->repository->findDuplicate($contaContabil);
+        $contaContabilDuplicate = $this->repository->findMonthDescription($contaContabil);
 
         return !is_null($contaContabilDuplicate);
     }

@@ -65,6 +65,23 @@ abstract class AbstractContaContabilRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findMonthDescription(AbstractContaContabil $entity): ?AbstractContaContabil
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.descricao = :descricao')
+            ->andWhere('MONTH(c.data) = MONTH(:data)')
+            ->andWhere('YEAR(c.data) = YEAR(:data)')
+            ->setParameters([
+                'descricao' => $entity->getDescricao(),
+                'data' => $entity->getData()
+            ])
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    
+
     public function findByDate(int $year, int $month)
     {
         return $this->createQueryBuilder('c')

@@ -26,8 +26,8 @@ class DespesaRepository extends AbstractContaContabilRepository
     public function getTotalPerCategory($year, $month)
     {
         return $this->createQueryBuilder('d')
-            ->select('SUM(d.valor) as total')
-            ->addSelect('d.categoria')
+            ->select('d.categoria')
+            ->AddSelect('SUM(d.valor) as total')
             ->andWhere('YEAR(d.data) = :ano')
             ->andWhere('MONTH(d.data) = :mes')
             ->addGroupBy('d.categoria')

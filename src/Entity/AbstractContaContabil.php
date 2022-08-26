@@ -22,6 +22,11 @@ abstract class AbstractContaContabil implements JsonSerializable
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     protected \DateTimeInterface $data;
 
+    public function __construct()
+    {
+        
+    }
+
     public function getDescricao(): ?string
     {
         return $this->descricao;
