@@ -1,0 +1,14 @@
+{
+    "id": "schemas/Response/invalid_request.json#",
+    "type": "object",
+    "properties": {
+        "$ref": "Common/status_message.json",
+        "erros": {
+            "$ref": "Common/errors_message.json",
+            "categoria": {
+                "type": "array",
+                "required": false
+            }
+        }
+    }
+}

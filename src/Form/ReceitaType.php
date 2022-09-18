@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\Validator\Constraints\Type;
 
 class ReceitaType extends AbstractType
@@ -37,6 +38,11 @@ class ReceitaType extends AbstractType
                     new NotBlank([
 
                         'message' => 'O campo não pode ser vázio'
+                    ]),
+
+                    new Positive([
+
+                        'message' => 'O campo deve ser maior que zero'
                     ])
                 ]
             ])

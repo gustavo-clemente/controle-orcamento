@@ -1,0 +1,12 @@
+{
+    "id": "schemas/Response/list.json#",
+    "type": "array",
+    "items": {
+
+        "type": "array",
+        "properties": {
+
+            "$ref": "Common/properties.json"
+        }
+    }
+}

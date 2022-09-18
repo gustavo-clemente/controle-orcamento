@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Facade\RelatorioFacade;
-use App\Repository\DespesaRepository;
-use App\Repository\ReceitaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,4 +26,5 @@ class ResumoController extends AbstractController
             $sumary
         );
     }
+    
 }

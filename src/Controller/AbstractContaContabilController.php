@@ -39,7 +39,7 @@ abstract class AbstractContaContabilController extends AbstractController
             return new JsonResponse([
                 'msg' => 'não foi possível realizar o cadastro',
                 'erros' => $this->getErrorMessages($form)
-            ]);
+            ],Response::HTTP_BAD_REQUEST);
         }
 
         try{
@@ -48,9 +48,9 @@ abstract class AbstractContaContabilController extends AbstractController
 
             return new JsonResponse([
 
-                'msg' => 'despesa cadastrada com sucesso',
+                'msg' => 'registro cadastrado com sucesso',
                 'registro' => $contaContabil
-            ]);
+            ],Response::HTTP_CREATED);
 
         }catch(DuplicateEntityException $e){
 
@@ -83,9 +83,9 @@ abstract class AbstractContaContabilController extends AbstractController
     public function readByDate(int $year, int $month)
     {
         $contaCotabilList = $this->repository->findByDate($year, $month);
-        $http_code = !empty($contaCotabilList) ? Response::HTTP_OK : Response::HTTP_NO_CONTENT;
+        // $http_code = !empty($contaCotabilList) ? Response::HTTP_OK : Response::HTTP_NO_CONTENT;
 
-        return new JsonResponse($contaCotabilList, $http_code);
+        return new JsonResponse($contaCotabilList);
     }
 
     #[Route('/{id}', methods: 'PUT')]
@@ -106,7 +106,7 @@ abstract class AbstractContaContabilController extends AbstractController
 
                     'msg' => 'Não foi possível atualizar o registro',
                     'erros' => $this->getErrorMessages($form)
-                ]);
+                ],Response::HTTP_BAD_REQUEST);
             }
 
             $contaContabilAtualizada = $this->facade->update($contaContabil);

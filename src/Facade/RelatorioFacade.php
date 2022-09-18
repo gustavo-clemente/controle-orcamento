@@ -26,7 +26,7 @@ class RelatorioFacade
             'totalReceita' => $totalReceita,
             'totalDespesa' => $totalDespesa,
             'saldoFinal' => $saldoFinal,
-            'TotalCategoria' => $totalCategoria
+            'totalCategoria' => $totalCategoria
         ];
     }
 }

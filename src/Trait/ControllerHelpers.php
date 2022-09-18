@@ -20,11 +20,7 @@ trait ControllerHelpers
         $errors = array();
 
         foreach ($form->getErrors() as $key => $error) {
-            if ($form->isRoot()) {
-                $errors['#'][] = $error->getMessage();
-            } else {
-                $errors[] = $error->getMessage();
-            }
+            $errors[] = $error->getMessage();
         }
 
         foreach ($form->all() as $child) {

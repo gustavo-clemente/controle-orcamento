@@ -1,0 +1,11 @@
+{
+    "id": "schemas/Response/created.json#",
+    "type" : "object",
+    "properties": {
+
+        "$ref": "Common/status_message.json",
+        "registro":{
+            "$ref": "Common/register.json"
+        }
+    }
+}

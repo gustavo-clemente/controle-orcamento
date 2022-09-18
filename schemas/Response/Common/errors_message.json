@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "descricao": {
+            "type": "array",
+            "required": false
+        },
+        "valor": {
+            "type": "array",
+            "required": false
+        },
+        "data": {
+            "type": "array",
+            "required": false
+        }
+    }
+}

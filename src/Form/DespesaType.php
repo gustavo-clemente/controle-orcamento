@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class DespesaType extends AbstractType
 {
@@ -41,6 +42,10 @@ class DespesaType extends AbstractType
                     new NotBlank([
 
                         'message' => 'O campo não pode ser vázio'
+                    ]),
+                    new Positive([
+
+                        'message' => 'O campo deve ser maior que zero'
                     ])
                 ]
             ])

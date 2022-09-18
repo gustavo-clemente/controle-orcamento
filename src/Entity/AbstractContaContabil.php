@@ -20,7 +20,7 @@ abstract class AbstractContaContabil implements JsonSerializable
     protected ?float $valor;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    protected \DateTimeInterface $data;
+    protected ?\DateTimeInterface $data;
 
     public function __construct()
     {
@@ -56,7 +56,7 @@ abstract class AbstractContaContabil implements JsonSerializable
         return $this->data;
     }
 
-    public function setData(\DateTimeInterface $data): self
+    public function setData(?\DateTimeInterface $data): self
     {
         $this->data = $data;
 
