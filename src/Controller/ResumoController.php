@@ -23,7 +23,7 @@ class ResumoController extends AbstractController
 
         return new JsonResponse(
 
-            $sumary
+            ["resultado" => $sumary]
         );
     }
     
