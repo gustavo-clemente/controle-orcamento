@@ -21,10 +21,7 @@ class ResumoController extends AbstractController
     {
         $sumary = $this->relatorioFacade->getSumary($year, $month);
 
-        return new JsonResponse(
-
-            ["resultado" => $sumary]
-        );
+        return new JsonResponse($sumary);
     }
     
 }
