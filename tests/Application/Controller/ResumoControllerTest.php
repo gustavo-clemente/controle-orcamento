@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Trait\ClientAuthentication;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ResumoControllerTest extends WebTestCase
 {
+    use ClientAuthentication;
+
     protected  KernelBrowser $client;
     protected  string $schemaPath = __DIR__ . '/../../../schemas/Response/Summary';
 
@@ -14,6 +17,7 @@ class ResumoControllerTest extends WebTestCase
     {
         self::ensureKernelShutdown();
         $this->client = self::createClient();
+        $this->authenticateClient();
     }
 
     /**
@@ -25,6 +29,8 @@ class ResumoControllerTest extends WebTestCase
 
         $response = $this->client->getResponse();
         $responseBody = json_decode($response->getContent(), true);
+
+        print_r($responseBody);
 
         self::assertEquals($expectedReturn['totalReceita'], $responseBody['totalReceita']);
         self::assertEquals($expectedReturn['totalDespesa'], $responseBody['totalDespesa']);

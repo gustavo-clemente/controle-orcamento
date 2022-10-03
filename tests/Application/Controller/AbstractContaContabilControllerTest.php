@@ -3,27 +3,34 @@
 namespace App\Test\Application;
 
 use App\Entity\AbstractContaContabil;
+use App\Entity\User;
 use App\Exception\EntityNotFoundException;
 use App\Facade\AbstractContaContabilFacade;
+use App\Trait\ClientAuthentication;
 use App\Trait\SchemaValidation;
 use JsonSchema\Validator;
+use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 abstract class AbstractContaContabilControllerTest extends WebTestCase
 {
 
-    use SchemaValidation;
+    use SchemaValidation, ClientAuthentication;
     
     protected  KernelBrowser $client;
     protected  string $schemaPath = __DIR__ . '/../../../schemas/Response';
+    protected string $jwt;
 
     protected string $endpoint;
 
     public function setUp(): void
     {
+     
         self::ensureKernelShutdown();
         $this->client = self::createClient();
+
+        $this->authenticateClient();
 
     }
 

@@ -1,0 +1,71 @@
+Despesa Controller (App\Test\Application\Controller\DespesaController)
+ [x] Create action with data set "teste cadastro realizado"
+ [x] Create action with data set "teste cadastro realizado sem informar categoria"
+ [x] Create action with data set "teste cadastro duplicado no mês"
+ [x] Create action with data set "teste cadastro descrição inválida"
+ [x] Create action with data set "teste cadastro valor inválido"
+ [x] Create action with data set "teste cadastro valor negativo"
+ [x] Create action with data set "teste cadastro data inválida"
+ [x] Create action with data set "teste cadastro categoria inválida"
+ [x] Create action with data set "teste cadastro com campos faltando"
+ [x] Read all action with data set "busca geral"
+ [x] Read all action with data set "busca aproximada"
+ [x] Read all action with data set "busca específica"
+ [x] Read all action with data set "busca inválida"
+ [x] Read by id action
+ [x] Read by date action with data set "Janeiro de 2022"
+ [x] Read by date action with data set "Março de 2022"
+ [x] Read by date action with data set "Março de 2020"
+ [x] Read by date action with data set "Sem resultado"
+ [x] Update action with data set "teste cadastro realizado"
+ [x] Update action with data set "teste cadastro realizado sem informar categoria"
+ [x] Update action with data set "teste cadastro duplicado no mês"
+ [x] Update action with data set "teste cadastro descrição inválida"
+ [x] Update action with data set "teste cadastro valor inválido"
+ [x] Update action with data set "teste cadastro valor negativo"
+ [x] Update action with data set "teste cadastro data inválida"
+ [x] Update action with data set "teste cadastro categoria inválida"
+ [x] Update action with data set "teste cadastro com campos faltando"
+ [x] Update not found action
+ [x] Delete action
+ [x] Delete not found action
+
+Login Controller (App\Test\Application\Controller\LoginController)
+ [x] Login action with data set "teste login autenticado"
+ [x] Login action with data set "teste login senha inválida"
+ [x] Login action with data set "teste login usuário inválido"
+
+Receita Controller (App\Test\Application\Controller\ReceitaController)
+ [x] Create action with data set "teste cadastro realizado"
+ [x] Create action with data set "teste cadastro duplicado no mês"
+ [x] Create action with data set "teste cadastro descrição inválida"
+ [x] Create action with data set "teste cadastro valor inválido"
+ [x] Create action with data set "teste cadastro valor negativo"
+ [x] Create action with data set "teste cadastro data inválida"
+ [x] Create action with data set "teste cadastro com campos faltando"
+ [x] Read all action with data set "busca geral"
+ [x] Read all action with data set "busca aproximada"
+ [x] Read all action with data set "busca específica"
+ [x] Read all action with data set "busca inválida"
+ [x] Read by id action
+ [x] Read by date action with data set "Janeiro de 2022"
+ [x] Read by date action with data set "Março de 2022"
+ [x] Read by date action with data set "Março de 2020"
+ [x] Read by date action with data set "Sem resultado"
+ [x] Update action with data set "teste cadastro realizado"
+ [x] Update action with data set "teste cadastro duplicado no mês"
+ [x] Update action with data set "teste cadastro descrição inválida"
+ [x] Update action with data set "teste cadastro valor inválido"
+ [x] Update action with data set "teste cadastro valor negativo"
+ [x] Update action with data set "teste cadastro data inválida"
+ [x] Update action with data set "teste cadastro com campos faltando"
+ [x] Update not found action
+ [x] Delete action
+ [x] Delete not found action
+
+Resumo Controller (App\Controller\ResumoController)
+ [x] Read summary action with data set "Janeiro de 2022"
+ [x] Read summary action with data set "Março de 2020"
+ [x] Read summary action with data set "Janeiro de 2024"
+ [x] Read summary action with data set "Sem resultados"
+
