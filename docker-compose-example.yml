@@ -1,0 +1,31 @@
+services:
+
+  api:
+    image: gustavoclemente/controle-orcamento:1.0.0
+    environment:
+      - APP_ENV={{APP_ENV}}
+      - APP_SECRET={{APP_SECRET}}
+      - DATABASE_URL=mysql://root:{{DATABASE_PASSWORD}}@database/controle-orcamento?serverVersion=8.1&charset=utf8mb4
+      - JWT_PASSPHRASE={{JWT_PASSPHRASE}}
+    ports:
+      - 8000:8000
+      - 9000:9000
+    networks:
+      - controleOrcamentoNetwork
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD={{DATABASE_PASSWORD}}
+    networks:
+      - controleOrcamentoNetwork
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+networks:
+  controleOrcamentoNetwork:
+    driver: bridge
+
+    
