@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: database
+  labels:
+    app: database
+spec:
+  containers:
+    - name: database
+      image: mysql:8.0
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      envFrom:
+        - configMapRef:
+            name: database-config-map
+      ports:
+        -  containerPort: 3306

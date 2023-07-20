@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-controle-orcamento
+  labels:
+    apps: api-controle-orcamento
+spec:
+  containers:
+  - name: api-controle-orcamento
+    image: gustavoclemente/controle-orcamento:1.0.0
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    envFrom:
+      - configMapRef:
+          name: api-config-map
+                    
+    ports:
+      - containerPort: 8000
