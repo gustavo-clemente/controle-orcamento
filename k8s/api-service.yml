@@ -7,6 +7,6 @@ spec:
   selector:
     app: api-controle-orcamento
   ports:
-    - port: 8000
+    - port: 80
       targetPort: 8000
       nodePort: 31000

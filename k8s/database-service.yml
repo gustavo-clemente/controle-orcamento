@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: database-service
 spec:
+  type: ClusterIP
   selector:
     app: database
   ports:
-  - port: 3306
+  - protocol: TCP
+    port: 3306
     targetPort: 3306

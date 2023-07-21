@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: database-config-map
 data:
-  MYSQL_ROOT_PASSWORD: Mvc2020
+  MYSQL_ROOT_PASSWORD: "123456"
