@@ -12,8 +12,11 @@ spec:
         limits:
           memory: "512Mi"
           cpu: "500m"
-      envFrom:
-        - configMapRef:
-            name: database-config-map
+      env:
+      - name: MYSQL_ROOT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: database-secrets
+            key: MYSQL_ROOT_PASSWORD
       ports:
         -  containerPort: 3306

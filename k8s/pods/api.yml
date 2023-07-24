@@ -12,9 +12,29 @@ spec:
       limits:
         memory: "256Mi"
         cpu: "500m"
-    envFrom:
-      - configMapRef:
-          name: api-config-map
-                    
+    env:
+      - name: APP_ENV
+        valueFrom:
+          secretKeyRef:
+            name: api-secrets
+            key: APP_ENV
+
+      - name: APP_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: api-secrets
+            key: APP_SECRET
+
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            name: api-secrets
+            key: DATABASE_URL
+
+      - name: JWT_PASSPHRASE
+        valueFrom:
+          secretKeyRef:
+            name: api-secrets
+            key: JWT_PASSPHRASE  
     ports:
       - containerPort: 8000
